@@ -1,0 +1,17 @@
+Mon Sep  9 09:01:10 AM UTC 2024
+user:zackchen
+home:/home/zackchen
+shell:/bin/bash
+pwd:/home/zackchen/Code/mcb185_self.learn
+path:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+Linux 97yearsoldguy 6.8.0-41-generic #41-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug  2 23:26:06 UTC 2024 aarch64 aarch64 aarch64 GNU/Linux
+Python 3.12.3
+/home/zackchen/Code
+/home/zackchen/Code/MCB185
+/home/zackchen/Code/MCB185/src
+/home/zackchen/Code/MCB185/data
+/home/zackchen/Code/MCB185/course
+/home/zackchen/Code/MCB185/ref
+/home/zackchen/Code/MCB185/.git
+/home/zackchen/Code/mcb185_self.learn
+/home/zackchen/Code/mcb185_self.learn/.git
