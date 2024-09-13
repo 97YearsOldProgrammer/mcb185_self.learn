@@ -109,7 +109,7 @@ if s2 < s3: print('B < a')
 # Function that determine if a number is a integer
 
 def is_integer(a):
-	if type(a) is int: print('This is integer')
+	if 	 type(a) is int:   print('This is integer')
 	elif type(a) is float: print('This is not integer')
 
 is_integer(11) #Checked, work
@@ -118,8 +118,8 @@ is_integer(11.5) #Checked, work
 # Whether it is a valid probability
 
 def is_validP(p):
-	if p <= 1: print('This is a valid probability')
-	elif p > 1: print('This is not a valid probability')
+	if 	 p <= 1: print('This is a valid probability')
+	elif p > 1:  print('This is not a valid probability')
 
 is_validP(0.05) #Checked,work
 is_validP(1.05)
