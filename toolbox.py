@@ -213,5 +213,63 @@ def hydropathy(seq):
 		s += kdh[aa]
 	return s / len(seq)
 
+# based on unit 8 data part, modified verion of 22oligotem.py
+# not sure if it meet thre requirement or not
 
-			
+def oligont(string):
+	d = {'A': 0, 'C': 0, 'G': 0, 'T': 0, '*': 0}
+	for nt in string:
+
+		if nt in d: d[nt]  += 1
+		else: 		d['*'] += 1
+
+	count = list(d.values())
+	total = sum(d.values())
+
+	if total <= 13:   return (d['A']+ d['T'] ) *2 + ( d['G'] + d['C'] ) *4 
+	elif total > 13:  return (64.9 + 41*( d['G'] + d['C'] -16.4)/(total))
+
+# typical structure for reading CSV file
+# This is non-universal function for every CSV file, display and learning purpose
+# from Dr.korf at unit 8
+
+""" def read_catalog(filepath):
+	catalog = []
+	with open(filepath) as fp:
+		for line in fp:
+			if line.startswith('#'): continue
+			name, length, seq, desc = line.rstrip().split(',')
+			record = {
+				'Name': name,
+				'Length': length,
+				'Sequence': seq,
+				'Description': desc
+			}
+			catalog.append(record)
+	return catalog """
+
+# for modification to test
+
+def read_fasta(filename):
+	"""iteratively read records from a FASTA file"""
+	if   filename == '-':          fp = sys.stdin
+	elif filename.endswith('.gz'): fp = gzip.open(filename, 'rt')
+	else:                          fp = open(filename)
+	name = None
+	seqs = []
+	while True:
+		line = fp.readline()
+		if line == '': break
+		line = line.rstrip()
+		if line.startswith('>'):
+			if len(seqs) > 0:
+				yield(name, ''.join(seqs))
+				name = line[1:]
+				seqs = []
+			else:
+				name = line[1:]
+		else:
+			seqs.append(line)
+
+	yield(name, ''.join(seqs))
+	fp.close()
