@@ -189,7 +189,7 @@ gcode = {
 	'TTA' : 'L',	'TTC' : 'F',	'TTG' : 'L',	'TTT' : 'F',
 }
 
-def translate(seq):
+def translate_pro(seq):
 	pro = []
 	for i in range(0, len(seq), 3):
 		codon = seq[i:i+3]

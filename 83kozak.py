@@ -5,7 +5,7 @@ import re
 
 # collecting CDS , trying to put into a 2dimensional matrix
 
-CDS = []                                           # this is where every genetic codon start
+CDS = []											# this is where every genetic codon start
 with gzip.open(sys.argv[1], 'rt') as fp:
 
 	while True:
@@ -14,7 +14,7 @@ with gzip.open(sys.argv[1], 'rt') as fp:
 		line = line.strip()
 
 		if line.startswith('CDS'):
-			if    line.endswith(')'): continue     # there is complement strand
+			if    line.endswith(')'): continue	   # there is complement strand
 			elif  line.endswith('K'): continue     # there is one protein sequence ends with K
 			else:
 				SEc = line[3:]                     # starting and ending codon

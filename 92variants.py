@@ -1,14 +1,3 @@
-import random
-import sys
-import math
-import toolbox
-import mcb185
-import itertools
-import json
-import gzip
-import re
-import argparse
-
 import argparse
 import gzip
 
@@ -50,29 +39,45 @@ with gzip.open (arg.gff, 'rt') as fp:
 		line = line.split()	
 		a += 1
 
-		if line[0] == 'I': 
+		if line[0] == 'I' and line[0].endswith('I'): 
 			variant[a]= line[2]				# where we record different types of variant
 			bound = (line[3], line[4])
 			index.append(bound)
 
+
 d = dict()
 
-i = int(4014)
-n = -1
+for i in vcf['I']: 							# plan on doing it seperately, start with catagory 'I'
 
-for lb, ub in index:
-						
-	n += 1
-	lowerbound = int(lb)
-	upperbound = int(ub)
+	if bool(d):
+		output = [k for k, v in d.items() if not v and k]
+		output = ','.join(output)
+		print(f'I\t{j}\t{output}')
+
+	i = int(i)								# convert string into integer for later comparison
+	j = i
+	n = -1									# indice for the variant output to dictionary D
+	c = 0
+	d = dict()								# a diciontary used for storing unique type of variant
+	loopkiller = False
+
+	
+	for lb, ub in index:
 		
-	if  lowerbound <= i and i <= upperbound: 
-		d[variant[n]] = ''
+		lb = int(lb)
+		ub = int(ub)
 
-output = [k for k, v in d.items() if not v and k]
-output = ','.join(output)
-print(f'I\t{i}\t{output}')
+		n += 1
+		if loopkiller: 	break				# do output while also break
+		
+		if  lb <= i and i <= ub: 
 
+			c += 1							# count how many times has been within the range
+			d[variant[n]] = ''
+
+			if c >= 300:					# start time saver
+				loopkiller = True			# since it is impossible for a value to have 300 times same variant inside it
+		
 		
 		
 
